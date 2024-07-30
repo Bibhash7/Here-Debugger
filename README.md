@@ -9,7 +9,7 @@ This user-friendly debugger simplifies the debugging process by accepting any nu
 
 ## Installation
 To install the debugger, use:
-```pip install here_debugger```
+```pip install here-debugger```
 
 ## Usage
 1. Print variable names and values.

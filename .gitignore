@@ -36,6 +36,8 @@ var/
 pip-log.txt
 pip-delete-this-directory.txt
 
+**
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -156,7 +158,8 @@ cmake-build-*/
 
 # IntelliJ
 out/
-
+.idea
+dist
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
