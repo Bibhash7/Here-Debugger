@@ -17,12 +17,12 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
         if not include_types:
             for arg in args:
                 variable_name = [name for name, value in frame_locals.items() if value is arg][0]
-                print(f"{variable_name} = {arg},",end=' | ')
+                print(f"{variable_name} = {arg}",end=' | ')
         else:
             for arg in args:
                 variable_name = [name for name, value in frame_locals.items() if value is arg][0]
-                print(f"{variable_name} = {arg}, type={type(arg)}",end=' | ')
+                print(f"{variable_name} = {arg}, type={type(arg)}", end=' | ')
         del current_frame
-        print(end="")
+        print(end="\n")
     except Exception as e:
         raise Exception("HereDebuggerException: Expected variable(s), got value(s).")
