@@ -3,7 +3,7 @@ import unittest
 import io
 import sys
 import inspect
-from unittest.mock import patch
+
 
 
 class TestHereDebugger(unittest.TestCase):
@@ -38,7 +38,7 @@ class TestHereDebugger(unittest.TestCase):
         y = 'test'
         z = [1, 2, 3]
 
-        # Call the function with the test variables
+        # Call the function with the test variables, 2 times
         here_debugger(x, y)
         here_debugger(z)
 
@@ -105,7 +105,7 @@ class TestHereDebugger(unittest.TestCase):
         captured_output = io.StringIO()
         sys.stdout = captured_output
 
-        # Call the function with include_types=True
+        # Call the function with no input
         here_debugger()
 
         # Restore stdout
@@ -117,7 +117,7 @@ class TestHereDebugger(unittest.TestCase):
 
     def test_here_debugger_with_no_assignment(self):
         with self.assertRaises(Exception) as context:
-            # Call the function with constant
+            # Call the function with variable that not has been assigned
             here_debugger(a)
         self.assertTrue("name 'a' is not defined" in str(context.exception))
 
