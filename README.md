@@ -20,7 +20,7 @@ To install the debugger, use:
    here_debugger(a, b)
    ```
    Output:
-   ```Line-4: a = 2, | b = Bibhash, |```
+   ```Line-4: a = 2 | b = Bibhash |```
 
 2. Add search text:
     ```
@@ -30,7 +30,7 @@ To install the debugger, use:
    here_debugger(a,b, custom_arguments="Debug-")
    ```
    Output:
-   ```Debug-:Line-4: a = 2, | b = Bibhash, |```
+   ```Debug-:Line-4: a = 2 | b = Bibhash |```
 
 3. Print variable type information:
    ```
