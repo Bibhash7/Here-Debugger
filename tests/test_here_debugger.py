@@ -88,18 +88,6 @@ class TestHereDebugger(unittest.TestCase):
         expected_output = f"Line-{inspect.currentframe().f_lineno - 6}: x = 10, type=<class 'int'> | y = test, type=<class 'str'> | "
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
-    def test_here_debugger_with_constant(self):
-        # Capture the output
-        captured_output = io.StringIO()
-        sys.stdout = captured_output
-        with self.assertRaises(Exception) as context:
-            here_debugger("")
-
-        # Call the function with constant
-
-        # Restore stdout
-        self.assertTrue("HereDebuggerException: Expected variable(s), got value(s)." in str(context.exception))
-
     def test_here_debugger_with_no_input(self):
         # Capture the output
         captured_output = io.StringIO()
@@ -112,12 +100,40 @@ class TestHereDebugger(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = "Line-109:"
+        expected_output = ""
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
-    def test_here_debugger_with_no_assignment(self):
-        with self.assertRaises(Exception) as context:
-            # Call the function with variable that not has been assigned
-            here_debugger(a)
-        self.assertTrue("name 'a' is not defined" in str(context.exception))
+    def test_here_debugger_with_constant_and_assignment(self):
+        # Capture the output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+
+        # Call the function with no assignment and a assignment
+        a = 2
+        here_debugger("Here",a)
+
+        # Restore stdout
+        sys.stdout = sys.__stdout__
+
+        # Verify print output
+        expected_output = "Line-113: Here | a = 2 |"
+        self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
+
+    def test_here_debugger_with_constant_and_assignment_with_include_types(self):
+        # Capture the output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+
+        # Call the function with no assignment and a assignment with include types
+        a = 2
+        here_debugger("Here",a, include_types=True)
+
+        # Restore stdout
+        sys.stdout = sys.__stdout__
+
+        # Verify print output
+        expected_output = "Line-129: Here, type=<class 'str'> | a = 2, type=<class 'int'> |"
+        self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
+
+
 

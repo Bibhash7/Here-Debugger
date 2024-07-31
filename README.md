@@ -42,3 +42,13 @@ To install the debugger, use:
    here_debugger(a,b,c,d, custom_arguments="Debug-", include_types=True)
    ```
    Output: ```Debug-:Line-6: a = 2, type=<class 'int'> | b = Bibhash, type=<class 'str'> | c = [2, 2], type=<class 'list'> | d = {}, type=<class 'dict'> | ```
+
+4. Update: Now supports constants:
+   ```
+   from here_debugger.debug import here_debugger
+   a = 2
+   "Bibhash"
+   here_debugger(a,b, custom_arguments="Debug-")
+   ```
+   Output:
+   ```Debug-:Line-4: a = 2 | Bibhash |```
