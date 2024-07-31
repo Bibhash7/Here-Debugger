@@ -115,3 +115,9 @@ class TestHereDebugger(unittest.TestCase):
         expected_output = "Line-109:"
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
+    def test_here_debugger_with_no_assignment(self):
+        with self.assertRaises(Exception) as context:
+            # Call the function with constant
+            here_debugger(a)
+        self.assertTrue("name 'a' is not defined" in str(context.exception))
+
