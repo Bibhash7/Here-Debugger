@@ -5,8 +5,8 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
     Prints any number of variables, their names, also types (Optional)
     :param args: variables passed as a keyword argument
     :param custom_arguments: Search String, append at the beginning
-    :param include_types: False (By default) if True, it will print the types of the variable.
-    :return: None, Raises exception for constant values.
+    :param include_types: False (By default) if True, it will print the type of the variables.
+    :return: None.
     """
     try:
         if args:
@@ -34,4 +34,4 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
         else:
             print()
     except Exception as e:
-        raise Exception("HereDebuggerException: Some exception occured.")
+        raise Exception("HereDebuggerException: Some exception occurred.")
