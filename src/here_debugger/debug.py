@@ -6,7 +6,7 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
     :param args: variables passed as a keyword argument
     :param custom_arguments: Search String, append at the beginning
     :param include_types: False (By default) if True, it will print the types of the variable.
-    :return: None
+    :return: None, Raises exception for constant values.
     """
     try:
         current_frame = inspect.currentframe()
