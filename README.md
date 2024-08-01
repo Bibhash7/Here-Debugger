@@ -43,7 +43,7 @@ To install the debugger, use:
    d = {}
    here_debugger(a,b,c,d, custom_arguments="Debug-", include_types=True)
    ```
-   Output: ```Debug-:Line-6: a = 2, type=<class 'int'> | b = Bibhash, type=<class 'str'> | c = [2, 2], type=<class 'list'> | d = {}, type=<class 'dict'> | ```
+   Output: ```Debug-:Line-6: a = 2, type = <class 'int'> | b = Bibhash, type = <class 'str'> | c = [2, 2], type = <class 'list'> | d = {}, type = <class 'dict'> | ```
 
 4. Update: Now supports constants:
    ```

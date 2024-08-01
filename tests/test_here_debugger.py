@@ -85,7 +85,7 @@ class TestHereDebugger(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = f"Line-{inspect.currentframe().f_lineno - 6}: x = 10, type=<class 'int'> | y = test, type=<class 'str'> | "
+        expected_output = f"Line-{inspect.currentframe().f_lineno - 6}: x = 10, type = <class 'int'> | y = test, type = <class 'str'> | "
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
     def test_here_debugger_with_no_input(self):
@@ -132,7 +132,7 @@ class TestHereDebugger(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = "Line-129: Here, type=<class 'str'> | a = 2, type=<class 'int'> |"
+        expected_output = "Line-129: Here, type = <class 'str'> | a = 2, type = <class 'int'> |"
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
 

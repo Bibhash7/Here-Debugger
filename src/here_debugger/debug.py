@@ -26,9 +26,9 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
                 for arg in args:
                     try:
                         variable_name = [name for name, value in frame_locals.items() if value is arg][0]
-                        print(f"{variable_name} = {arg}, type={type(arg)}", end=' | ')
+                        print(f"{variable_name} = {arg}, type = {type(arg)}", end=' | ')
                     except IndexError:
-                        print(f"{arg}, type={type(arg)}", end=' | ')
+                        print(f"{arg}, type = {type(arg)}", end=' | ')
             del current_frame
             print()
         else:
