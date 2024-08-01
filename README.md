@@ -53,5 +53,5 @@ To install the debugger, use:
    Output:
    ```Debug-:Line-4: a = 2 | Bibhash |```
 
-## Unit test case Coverage: 98%
+## Test Case Coverage: 98%
 [![here-debugger-coverage-report.png](https://i.postimg.cc/859qd2Kv/here-debugger-coverage-report.png)](https://postimg.cc/5Y57bRM9)
