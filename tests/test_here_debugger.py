@@ -1,12 +1,11 @@
-from src.here_debugger.debug import here_debugger
-import unittest
+import os
 import io
 import sys
-import inspect
-
-
+import unittest
+from src.here_debugger.debug import here_debug
 
 class TestHereDebugger(unittest.TestCase):
+    file_name = os.path.basename(__file__)
 
     def test_here_debugger(self):
         # Capture the output
@@ -19,13 +18,13 @@ class TestHereDebugger(unittest.TestCase):
         z = [1, 2, 3]
 
         # Call the function with the test variables
-        here_debugger(x, y, z)
+        here_debug(x, y, z)
 
         # Restore stdout
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = f"Line-{inspect.currentframe().f_lineno - 6}: x = 10 | y = test | z = [1, 2, 3] | "
+        expected_output = f"File: {self.file_name}: Line-21: x = 10 | y = test | z = [1, 2, 3] | "
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
     def test_here_debugger_multiline(self):
@@ -35,18 +34,18 @@ class TestHereDebugger(unittest.TestCase):
 
         # Define test variables
         x = 10
-        y = 'test'
+        y = "test"
         z = [1, 2, 3]
 
         # Call the function with the test variables, 2 times
-        here_debugger(x, y)
-        here_debugger(z)
+        here_debug(x,y)
+        here_debug(z)
+
 
         # Restore stdout
         sys.stdout = sys.__stdout__
-
         # Verify print output
-        expected_output = f"Line-42: x = 10 | y = test | \nLine-43: z = [1, 2, 3] | "
+        expected_output = f"File: {self.file_name}: Line-41: x = 10 | y = test | \nFile: {self.file_name}: Line-42: z = [1, 2, 3] |"
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
 
@@ -60,13 +59,13 @@ class TestHereDebugger(unittest.TestCase):
         x = 10
 
         # Call the function with a custom argument
-        here_debugger(x, custom_arguments="DEBUG")
+        here_debug(x, custom_arguments="DEBUG")
 
         # Restore stdout
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = f"DEBUG:Line-{inspect.currentframe().f_lineno - 6}: x = 10 | "
+        expected_output = f"DEBUG: File: {self.file_name}: Line-62: x = 10 | "
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
     def test_here_debugger_with_include_types(self):
@@ -79,13 +78,13 @@ class TestHereDebugger(unittest.TestCase):
         y = 'test'
 
         # Call the function with include_types=True
-        here_debugger(x, y, include_types=True)
+        here_debug(x, y, include_types=True)
 
         # Restore stdout
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = f"Line-{inspect.currentframe().f_lineno - 6}: x = 10, type = <class 'int'> | y = test, type = <class 'str'> | "
+        expected_output = f"File: {self.file_name}: Line-81: x = 10, type = <class 'int'> | y = test, type = <class 'str'> | "
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
     def test_here_debugger_with_no_input(self):
@@ -94,7 +93,7 @@ class TestHereDebugger(unittest.TestCase):
         sys.stdout = captured_output
 
         # Call the function with no input
-        here_debugger()
+        here_debug()
 
         # Restore stdout
         sys.stdout = sys.__stdout__
@@ -110,13 +109,13 @@ class TestHereDebugger(unittest.TestCase):
 
         # Call the function with no assignment and a assignment
         a = 2
-        here_debugger("Here",a)
+        here_debug("Here", a)
 
         # Restore stdout
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = "Line-113: Here | a = 2 |"
+        expected_output = f"File: {self.file_name}: Line-112: Here | a = 2 |"
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
     def test_here_debugger_with_constant_and_assignment_with_include_types(self):
@@ -126,13 +125,13 @@ class TestHereDebugger(unittest.TestCase):
 
         # Call the function with no assignment and a assignment with include types
         a = 2
-        here_debugger("Here",a, include_types=True)
+        here_debug("Here", a, include_types=True)
 
         # Restore stdout
         sys.stdout = sys.__stdout__
 
         # Verify print output
-        expected_output = "Line-129: Here, type = <class 'str'> | a = 2, type = <class 'int'> |"
+        expected_output = f"File: {self.file_name}: Line-128: Here, type = <class 'str'> | a = 2, type = <class 'int'> |"
         self.assertEqual(captured_output.getvalue().strip(), expected_output.strip())
 
 

@@ -1,6 +1,6 @@
+import os
 import sys
-import inspect
-def here_debugger(*args, custom_arguments=None, include_types=False):
+def here_debug(*args, custom_arguments=None, include_types=False):
     """
     Prints any number of variables, their names, also types (Optional)
     :param args: variables passed as a keyword argument
@@ -10,11 +10,12 @@ def here_debugger(*args, custom_arguments=None, include_types=False):
     """
     try:
         if args:
-            current_frame = inspect.currentframe()
+            current_frame = sys._getframe()
+            current_file = os.path.basename(current_frame.f_back.f_code.co_filename)
             frame_locals = current_frame.f_back.f_locals
             if custom_arguments is not None:
-                print(custom_arguments,end=":")
-            print(f"Line-{sys._getframe().f_back.f_lineno}:",end=' ')
+                print(custom_arguments,end=": ")
+            print(f"File: {current_file}: Line-{current_frame.f_back.f_lineno}:",end=' ')
             if not include_types:
                 for arg in args:
                     try:
