@@ -50,7 +50,7 @@ class TestHereDebugger(unittest.TestCase):
 
 
 
-    def test_here_debugger_with_custom_arguments(self):
+    def test_here_debugger_with_custom_search_text(self):
         # Capture the output
         captured_output = io.StringIO()
         sys.stdout = captured_output
@@ -59,7 +59,7 @@ class TestHereDebugger(unittest.TestCase):
         x = 10
 
         # Call the function with a custom argument
-        here_debug(x, custom_arguments="DEBUG")
+        here_debug(x, custom_search_text="DEBUG")
 
         # Restore stdout
         sys.stdout = sys.__stdout__

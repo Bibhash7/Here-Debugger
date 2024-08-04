@@ -16,44 +16,43 @@ To install the debugger, use:
 ## Usage
 1. Print variable names and values.
    ```
-   from here_debugger.debug import here_debugger
+   from here_debugger.debug import here_debug
    a = 2
    b = "Bibhash"
-   here_debugger(a, b)
+   here_debug(a, b)
    ```
    Output:
-   ```Line-4: a = 2 | b = Bibhash |```
+   ```File: <current_file>: Line-4: a = 2 | b = Bibhash |```
 
 2. Add search text:
     ```
-   from here_debugger.debug import here_debugger
+   from here_debugger.debug import here_debug
    a = 2
    b = "Bibhash"
-   here_debugger(a,b, custom_arguments="Debug-")
+   here_debug(a,b, custom_search_text="Debug-")
    ```
    Output:
-   ```Debug-:Line-4: a = 2 | b = Bibhash |```
+   ```Debug-: File: <current_file>: Line-4: a = 2 | b = Bibhash |```
 
 3. Print variable type information:
    ```
-   from here_debugger.debug import here_debugger
+   from here_debugger.debug import here_debug
    a = 2
    b = "Bibhash"
    c = [2,2]
    d = {}
-   here_debugger(a,b,c,d, custom_arguments="Debug-", include_types=True)
+   here_debugger(a,b,c,d, custom_search_text="Debug-", include_types=True)
    ```
-   Output: ```Debug-:Line-6: a = 2, type = <class 'int'> | b = Bibhash, type = <class 'str'> | c = [2, 2], type = <class 'list'> | d = {}, type = <class 'dict'> | ```
+   Output: ```Debug-: File: <current_file>: Line-6: a = 2, type = <class 'int'> | b = Bibhash, type = <class 'str'> | c = [2, 2], type = <class 'list'> | d = {}, type = <class 'dict'> | ```
 
 4. Update: Now supports constants:
    ```
-   from here_debugger.debug import here_debugger
+   from here_debugger.debug import here_debug
    a = 2
-   "Bibhash"
-   here_debugger(a,b, custom_arguments="Debug-")
+   here_debug(a,"Bibhash", custom_search_text="Debug-")
    ```
    Output:
-   ```Debug-:Line-4: a = 2 | Bibhash |```
+   ```Debug-: File: <current_file>: Line-4: a = 2 | Bibhash |```
 
 ## Test Case Coverage: 98%
 [![here-debugger-coverage-report.png](https://i.postimg.cc/859qd2Kv/here-debugger-coverage-report.png)](https://postimg.cc/5Y57bRM9)
