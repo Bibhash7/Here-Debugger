@@ -4,6 +4,10 @@ This user-friendly debugger simplifies the debugging process by accepting any nu
 
 Pypi: https://pypi.org/project/here-debugger/
 
+Download Summary: https://www.pepy.tech/projects/here-debugger
+
+[![here-debugger-os.png](https://i.postimg.cc/7hMxTKfG/here-debugger-os.png)](https://postimg.cc/y3xqMXhs)
+
 ## Features:
 - Prints variable names and values
 - Displays line number of the variables
