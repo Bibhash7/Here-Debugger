@@ -1,4 +1,5 @@
-# Here-Debugger
+# Here-Debugger [![Downloads](https://static.pepy.tech/badge/here-debugger)](https://pepy.tech/project/here-debugger)
+
 This user-friendly debugger simplifies the debugging process by accepting any number of variables and printing their names, values, and line numbers. It also offers options to add search text and include variable type information for enhanced clarity.
 
 Pypi: https://pypi.org/project/here-debugger/
